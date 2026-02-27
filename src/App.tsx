@@ -56,7 +56,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col font-sans selection:bg-primary selection:text-white bg-bg text-ink">
       {/* Header */}
       <header className="px-8 py-6 flex justify-between items-center border-b border-ink/5 bg-bg/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="text-xl font-bold tracking-tighter">J.D. CONSULTING</div>
+        <div className="text-xl font-bold tracking-tighter">HI-HAT CONSULTING</div>
         <nav className="hidden md:flex gap-8 text-xs font-semibold tracking-widest uppercase">
           <a href="#work" className="hover:opacity-60 transition-opacity">Work</a>
           <a href="#services" className="hover:opacity-60 transition-opacity">Services</a>
@@ -91,7 +91,7 @@ export default function App() {
           <div className="relative w-full max-w-[1600px] flex items-center justify-center">
             
             {/* Left Peek Slide */}
-            <div className="hidden lg:block relative shrink-0 cursor-pointer z-30 bg-bg mr-6 md:mr-12" onClick={prevSlide}>
+            <div className="hidden lg:block relative shrink-0 cursor-pointer z-30 bg-bg mr-6 md:mr-12 overflow-hidden" onClick={prevSlide}>
               <AnimatePresence mode="popLayout" initial={false} custom={direction}>
                 <motion.div
                   key={getSlideIndex(-1)}
@@ -113,7 +113,7 @@ export default function App() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  transition={{ type: "spring", stiffness: 120, damping: 25 }}
                   className="w-[320px] h-[330px] rounded-lg overflow-hidden"
                 >
                   <img src={PROJECTS[getSlideIndex(-1)].image} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
@@ -127,7 +127,7 @@ export default function App() {
                 <motion.h1 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="font-display text-5xl md:text-7xl leading-[0.9] uppercase mb-8"
+                  className="font-display text-5xl md:text-7xl leading-[0.9] uppercase mb-8 text-brand-heading"
                 >
                   Building Scalable Digital Architectures.
                 </motion.h1>
@@ -135,7 +135,7 @@ export default function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-ink/70 text-base mb-10"
+                  className="text-brand-paragraph text-base mb-10 font-copy"
                 >
                   Senior Web Development Consultant specializing in complex, high-performance systems for forward-thinking enterprises. Over 15 years of technical leadership and execution.
                 </motion.p>
@@ -157,31 +157,30 @@ export default function App() {
 
             {/* Main Active Slide - Responsive width, Split on tablet */}
             <div className="relative shrink-0 z-10 ml-0 md:ml-6 lg:ml-12 w-full md:w-[380px] lg:w-[485px] px-4 md:px-0">
-              <div className="w-full overflow-hidden">
+              <div className="w-full relative overflow-hidden">
                 <AnimatePresence mode="popLayout" initial={false} custom={direction}>
                   <motion.div
                     key={currentIndex}
                     custom={direction}
                     variants={{
                       enter: (direction: number) => ({
-                        x: direction > 0 ? "120%" : "-120%",
-                        opacity: 0
+                        x: direction > 0 ? "120%" : "-120%"
                       }),
                       center: {
-                        x: 0,
-                        opacity: 1
+                        x: 0
                       },
                       exit: (direction: number) => ({
-                        x: direction > 0 ? "-120%" : "120%",
-                        opacity: 0
+                        x: direction > 0 ? "-120%" : "120%"
                       })
                     }}
                     initial="enter"
                     animate="center"
                     exit="exit"
                     transition={{ 
-                      x: { type: "spring", stiffness: 300, damping: 35, restDelta: 0.5 },
-                      opacity: { duration: 0.2 }
+                      type: "spring", 
+                      stiffness: 170, 
+                      damping: 25, 
+                      restDelta: 0.5 
                     }}
                     className="w-full md:w-[380px] lg:w-[485px]"
                   >
@@ -212,7 +211,7 @@ export default function App() {
             </div>
 
             {/* Right Peek Slide */}
-            <div className="hidden lg:block relative shrink-0 cursor-pointer z-30 bg-bg ml-6 md:ml-12" onClick={nextSlide}>
+            <div className="hidden lg:block relative shrink-0 cursor-pointer z-30 bg-bg ml-6 md:ml-12 overflow-hidden" onClick={nextSlide}>
               <AnimatePresence mode="popLayout" initial={false} custom={direction}>
                 <motion.div
                   key={getSlideIndex(1)}
@@ -234,7 +233,7 @@ export default function App() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  transition={{ type: "spring", stiffness: 120, damping: 25 }}
                   className="w-[320px] h-[330px] rounded-lg overflow-hidden"
                 >
                   <img src={PROJECTS[getSlideIndex(1)].image} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
@@ -249,7 +248,7 @@ export default function App() {
       {/* Footer */}
       <footer className="px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-ink/5 bg-bg">
         <div className="text-xs text-ink/40 font-medium">
-          © 2024 J.D. Consulting
+          © 2024 Hi-hat Consulting
         </div>
         <div className="flex gap-6 text-ink/60">
           <a href="#" className="hover:text-ink transition-colors"><Twitter size={18} /></a>
